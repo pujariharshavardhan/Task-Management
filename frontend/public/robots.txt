@@ -1,0 +1,21 @@
+# APMS — http://localhost:8001
+User-agent: *
+Allow: /login
+Allow: /register
+Allow: /testimonials
+Allow: /privacy
+Allow: /terms
+Disallow: /dashboard
+Disallow: /projects
+Disallow: /tasks
+Disallow: /calendar
+Disallow: /team
+Disallow: /documents
+Disallow: /reviews
+Disallow: /reports
+Disallow: /notifications
+Disallow: /discussions
+Disallow: /settings
+Disallow: /api/
+
+Sitemap: http://localhost:8001/sitemap.xml

@@ -1,0 +1,903 @@
+project:
+  name: "Academic Project Management System"
+  short_name: "APMS"
+  description: "A modern SaaS-style project management platform for managing academic projects, student teams, tasks, milestones, deadlines, documents, reviews, and reports."
+  primary_user:
+    role: "Project Owner / Project Manager"
+    responsibility: "Create, manage, monitor, review, and complete academic projects."
+  core_goal:
+    - "Create projects"
+    - "Assign people"
+    - "Break projects into tasks"
+    - "Track progress"
+    - "Manage deadlines"
+    - "Review submissions"
+    - "Monitor team activity"
+    - "Generate project reports"
+
+architecture:
+  high_level_flow:
+    - "Frontend: React.js"
+    - "REST API: FastAPI"
+    - "Database: PostgreSQL"
+    - "File Storage: S3 or MinIO"
+  application_flow:
+    - "Login"
+    - "Dashboard"
+    - "Projects"
+    - "Project Details"
+    - "Tasks"
+    - "Milestones"
+    - "Team"
+    - "Calendar"
+    - "Documents"
+    - "Reviews"
+    - "Reports"
+    - "Notifications"
+    - "Settings"
+
+navigation:
+  sidebar:
+    - label: "Dashboard"
+      icon: "home"
+      route: "/dashboard"
+    - label: "Projects"
+      icon: "folder"
+      children:
+        - "All Projects"
+        - "Active"
+        - "Completed"
+        - "Archived"
+    - label: "Tasks"
+      icon: "check"
+      route: "/tasks"
+    - label: "Calendar"
+      icon: "calendar"
+      route: "/calendar"
+    - label: "Team"
+      icon: "users"
+      route: "/team"
+    - label: "Reports"
+      icon: "chart"
+      route: "/reports"
+    - label: "Documents"
+      icon: "file"
+      route: "/documents"
+    - label: "Discussions"
+      icon: "message"
+      route: "/discussions"
+    - label: "Settings"
+      icon: "settings"
+      route: "/settings"
+  top_bar:
+    - "Global Search"
+    - "Notifications"
+    - "New Project"
+    - "User Profile"
+    - "Settings"
+
+dashboard:
+  purpose: "Provide an at-a-glance view of all academic project activity."
+  greeting:
+    title: "Good afternoon, Harsha"
+    subtitle: "Here's what's happening with your projects."
+  statistic_cards:
+    - title: "Total Projects"
+      example_value: 24
+    - title: "Active Projects"
+      example_value: 8
+    - title: "Pending Tasks"
+      example_value: 37
+    - title: "Completed Projects"
+      example_value: 16
+  sections:
+    - name: "Active Projects"
+      fields:
+        - "Project Name"
+        - "Project Owner"
+        - "Progress"
+        - "Deadline"
+        - "Status"
+    - name: "Recent Activity"
+      fields:
+        - "User"
+        - "Action"
+        - "Object"
+        - "Timestamp"
+    - name: "Upcoming Deadlines"
+      fields:
+        - "Task"
+        - "Project"
+        - "Assignee"
+        - "Due Date"
+        - "Priority"
+  example_projects:
+    - project: "College LMS"
+      owner: "Harsha"
+      progress: 72
+      deadline: "2026-10-20"
+      status: "Active"
+    - project: "AI Chatbot"
+      owner: "Harsha"
+      progress: 45
+      deadline: "2026-11-05"
+      status: "At Risk"
+    - project: "Attendance System"
+      owner: "Harsha"
+      progress: 100
+      deadline: "2026-09-30"
+      status: "Completed"
+
+project_creation:
+  page: "Create Project"
+  trigger: "+ New Project"
+  sections:
+    basic_information:
+      fields:
+        - name: "Project Name"
+          type: "text"
+          required: true
+          example: "AI-Based Academic Management System"
+        - name: "Project Code"
+          type: "text"
+          required: true
+          example: "APMS-2026-001"
+        - name: "Project Type"
+          type: "select"
+          required: true
+          options:
+            - "Academic Project"
+            - "Mini Project"
+            - "Major Project"
+            - "Final Year Project"
+            - "Research Project"
+            - "Internship Project"
+            - "Hackathon Project"
+            - "Other"
+        - name: "Project Description"
+          type: "textarea"
+          required: true
+    academic_information:
+      fields:
+        - "College / University"
+        - "Department"
+        - "Academic Year"
+        - "Semester"
+        - "Batch"
+        - "Course"
+        - "Guide / Mentor"
+    dates:
+      fields:
+        - "Start Date"
+        - "Expected End Date"
+        - "Actual Completion Date"
+    management:
+      fields:
+        - name: "Priority"
+          type: "select"
+          options:
+            - "Low"
+            - "Medium"
+            - "High"
+            - "Critical"
+        - name: "Status"
+          type: "select"
+          options:
+            - "Planning"
+            - "Not Started"
+            - "In Progress"
+            - "On Hold"
+            - "Completed"
+            - "Cancelled"
+    technology_stack:
+      type: "multi-select"
+      options:
+        - "Python"
+        - "FastAPI"
+        - "React"
+        - "JavaScript"
+        - "HTML"
+        - "CSS"
+        - "Bootstrap"
+        - "Tailwind CSS"
+        - "PostgreSQL"
+        - "MySQL"
+        - "MongoDB"
+        - "Machine Learning"
+        - "AI"
+        - "Docker"
+        - "AWS"
+        - "Other"
+    team:
+      action: "Add Member"
+      fields:
+        - "Name"
+        - "Role"
+      example_members:
+        - name: "Harsha"
+          role: "Project Manager"
+        - name: "Rahul"
+          role: "Backend Developer"
+        - name: "Priya"
+          role: "Frontend Developer"
+        - name: "Sai"
+          role: "ML Developer"
+
+project_details:
+  route: "/projects/:project_id"
+  header:
+    fields:
+      - "Project Name"
+      - "Project Code"
+      - "Status"
+      - "Overall Progress"
+  tabs:
+    - "Overview"
+    - "Tasks"
+    - "Milestones"
+    - "Team"
+    - "Files"
+    - "Activity"
+  overview_fields:
+    - "Project Owner"
+    - "Start Date"
+    - "Deadline"
+    - "Priority"
+    - "Technology Stack"
+    - "Description"
+  progress:
+    display_type: "progress_bar"
+    example: 72
+
+task_management:
+  purpose: "Manage project work at task level."
+  board_type: "Kanban"
+  columns:
+    - "TODO"
+    - "IN PROGRESS"
+    - "REVIEW"
+    - "DONE"
+  example_tasks:
+    - "Login UI"
+    - "Database Schema"
+    - "Research"
+    - "API"
+    - "Voice STT"
+    - "Chat UI"
+    - "Dashboard"
+    - "Testing"
+  task_fields:
+    - name: "Task ID"
+      example: "TASK-102"
+    - name: "Task Title"
+      required: true
+    - name: "Description"
+    - name: "Project"
+      required: true
+    - name: "Assigned To"
+    - name: "Task Type"
+      options:
+        - "Development"
+        - "Design"
+        - "Research"
+        - "Testing"
+        - "Documentation"
+        - "Meeting"
+        - "Other"
+    - name: "Priority"
+      options:
+        - "Low"
+        - "Medium"
+        - "High"
+        - "Critical"
+    - name: "Status"
+      options:
+        - "Todo"
+        - "In Progress"
+        - "Review"
+        - "Done"
+    - name: "Start Date"
+    - name: "Due Date"
+    - name: "Estimated Hours"
+    - name: "Actual Hours"
+    - name: "Tags"
+    - name: "Attachments"
+    - name: "Comments"
+    - name: "Checklist"
+  checklist_example:
+    - "Create API"
+    - "Add validation"
+    - "Test API"
+    - "Update documentation"
+
+milestones:
+  purpose: "Track major project phases instead of only individual tasks."
+  fields:
+    - "Milestone Name"
+    - "Description"
+    - "Start Date"
+    - "Due Date"
+    - "Status"
+    - "Progress"
+  example:
+    - name: "Requirement Analysis"
+      start_date: "2026-09-01"
+      due_date: "2026-09-05"
+      progress: 100
+    - name: "UI/UX Design"
+      start_date: "2026-09-06"
+      due_date: "2026-09-12"
+      progress: 100
+    - name: "Backend Development"
+      start_date: "2026-09-13"
+      due_date: "2026-09-25"
+      progress: 60
+    - name: "Testing"
+      start_date: "2026-09-26"
+      due_date: "2026-10-05"
+      progress: 0
+    - name: "Final Submission"
+      start_date: "2026-10-06"
+      due_date: "2026-10-10"
+      progress: 0
+
+team_management:
+  purpose: "Allow the project owner to manage project members and responsibilities."
+  table_columns:
+    - "Name"
+    - "Role"
+    - "Tasks"
+    - "Progress"
+  roles:
+    - name: "Project Owner"
+      description: "Full control over the project."
+    - name: "Project Manager"
+      description: "Manages tasks, members, milestones, and reports."
+    - name: "Team Lead"
+      description: "Coordinates team members and technical work."
+    - name: "Developer"
+      description: "Works on development tasks."
+    - name: "Designer"
+      description: "Works on UI/UX and design tasks."
+    - name: "Researcher"
+      description: "Handles research and analysis."
+    - name: "Tester"
+      description: "Handles testing and quality checks."
+    - name: "Student"
+      description: "Works on assigned academic tasks."
+    - name: "Mentor"
+      description: "Reviews project progress and provides feedback."
+    - name: "Viewer"
+      description: "Read-only project access."
+  permissions:
+    owner:
+      - "Create projects"
+      - "Delete projects"
+      - "Add members"
+      - "Remove members"
+      - "Assign tasks"
+      - "Manage deadlines"
+      - "View reports"
+      - "Manage permissions"
+    manager:
+      - "Manage tasks"
+      - "Assign members"
+      - "Update milestones"
+      - "View reports"
+    member:
+      - "View assigned projects"
+      - "Update assigned tasks"
+      - "Upload files"
+      - "Add comments"
+      - "Update progress"
+    viewer:
+      - "View projects"
+      - "View progress"
+      - "View documents"
+
+calendar:
+  purpose: "Provide a visual view of project deadlines and events."
+  event_types:
+    - name: "Task Deadline"
+      icon: "red"
+    - name: "Milestone"
+      icon: "blue"
+    - name: "Meeting"
+      icon: "green"
+    - name: "Review"
+      icon: "yellow"
+    - name: "Submission"
+      icon: "purple"
+  views:
+    - "Month"
+    - "Week"
+    - "Day"
+    - "Agenda"
+
+documents:
+  purpose: "Store project-related academic files."
+  folder_structure:
+    - folder: "Requirements"
+      examples:
+        - "SRS.pdf"
+        - "Requirements.docx"
+    - folder: "Design"
+      examples:
+        - "Architecture.png"
+        - "ER-Diagram.png"
+    - folder: "Reports"
+      examples:
+        - "Weekly Report.pdf"
+        - "Final Report.pdf"
+    - folder: "Presentations"
+      examples:
+        - "Final-Presentation.pptx"
+    - folder: "Other"
+  document_fields:
+    - "File Name"
+    - "File Type"
+    - "Project"
+    - "Uploaded By"
+    - "Upload Date"
+    - "File URL"
+    - "Version"
+
+academic_reviews:
+  purpose: "Support academic evaluation and mentor/project-guide reviews."
+  evaluation_fields:
+    - name: "Guide / Mentor"
+    - name: "Technical Implementation"
+      max_score: 20
+    - name: "Documentation"
+      max_score: 20
+    - name: "Innovation"
+      max_score: 20
+    - name: "Presentation"
+      max_score: 20
+    - name: "Team Contribution"
+      max_score: 20
+    - name: "Total"
+      max_score: 100
+  review_stages:
+    - "Review 1"
+    - "Review 2"
+    - "Review 3"
+    - "Final Review"
+  review_fields:
+    - "Review Date"
+    - "Reviewer"
+    - "Score"
+    - "Feedback"
+    - "Comments"
+    - "Action Items"
+    - "Attachments"
+
+activity_timeline:
+  purpose: "Keep an audit-style history of project actions."
+  event_fields:
+    - "User"
+    - "Action"
+    - "Object"
+    - "Timestamp"
+    - "Description"
+  example_events:
+    - "Rahul completed Login API"
+    - "Priya uploaded UI Design"
+    - "Harsha assigned Testing API to Sai"
+    - "Backend Development milestone updated to 60%"
+    - "New document uploaded"
+
+reports:
+  purpose: "Measure project progress, workload, deadlines, and contribution."
+  report_types:
+    - "Project Progress"
+    - "Task Completion"
+    - "Team Workload"
+    - "Delayed Tasks"
+    - "Deadline Report"
+    - "Milestone Report"
+    - "Member Contribution"
+    - "Project Completion Report"
+  project_progress_metrics:
+    - "Overall Progress"
+    - "Total Tasks"
+    - "Completed Tasks"
+    - "Pending Tasks"
+    - "On-Time Tasks"
+    - "Delayed Tasks"
+  export_formats:
+    - "PDF"
+    - "Excel"
+    - "CSV"
+
+notifications:
+  purpose: "Alert users about important project events."
+  notification_types:
+    - "Task deadline tomorrow"
+    - "New task assigned"
+    - "Project deadline approaching"
+    - "New comment"
+    - "Task completed"
+    - "Milestone updated"
+    - "New document uploaded"
+    - "Review scheduled"
+  fields:
+    - "User"
+    - "Message"
+    - "Type"
+    - "Related Project"
+    - "Related Task"
+    - "Is Read"
+    - "Created At"
+
+search:
+  type: "Global Search"
+  placeholder: "Search projects, tasks, members, documents..."
+  searchable_entities:
+    - "Projects"
+    - "Tasks"
+    - "Members"
+    - "Documents"
+    - "Milestones"
+    - "Comments"
+  example_query: "voice"
+  example_results:
+    projects:
+      - "Voice Agent"
+    tasks:
+      - "Implement STT"
+      - "Implement TTS"
+      - "WebRTC Integration"
+    documents:
+      - "Voice Architecture.pdf"
+
+database:
+  database_engine: "PostgreSQL"
+  tables:
+    users:
+      columns:
+        - "id"
+        - "name"
+        - "email"
+        - "password_hash"
+        - "role"
+        - "profile_image"
+        - "created_at"
+        - "updated_at"
+    projects:
+      columns:
+        - "id"
+        - "name"
+        - "project_code"
+        - "description"
+        - "project_type"
+        - "college"
+        - "department"
+        - "academic_year"
+        - "semester"
+        - "batch"
+        - "course"
+        - "guide_id"
+        - "start_date"
+        - "end_date"
+        - "actual_completion_date"
+        - "priority"
+        - "status"
+        - "owner_id"
+        - "created_at"
+        - "updated_at"
+    project_members:
+      columns:
+        - "id"
+        - "project_id"
+        - "user_id"
+        - "role"
+        - "joined_at"
+    tasks:
+      columns:
+        - "id"
+        - "project_id"
+        - "title"
+        - "description"
+        - "task_type"
+        - "assigned_to"
+        - "status"
+        - "priority"
+        - "start_date"
+        - "due_date"
+        - "estimated_hours"
+        - "actual_hours"
+        - "created_by"
+        - "created_at"
+        - "updated_at"
+    task_checklists:
+      columns:
+        - "id"
+        - "task_id"
+        - "item"
+        - "is_completed"
+        - "position"
+    task_tags:
+      columns:
+        - "id"
+        - "task_id"
+        - "tag"
+    milestones:
+      columns:
+        - "id"
+        - "project_id"
+        - "name"
+        - "description"
+        - "start_date"
+        - "due_date"
+        - "status"
+        - "progress"
+        - "created_at"
+        - "updated_at"
+    comments:
+      columns:
+        - "id"
+        - "task_id"
+        - "user_id"
+        - "comment"
+        - "created_at"
+        - "updated_at"
+    documents:
+      columns:
+        - "id"
+        - "project_id"
+        - "uploaded_by"
+        - "file_name"
+        - "file_type"
+        - "file_size"
+        - "file_url"
+        - "version"
+        - "uploaded_at"
+    reviews:
+      columns:
+        - "id"
+        - "project_id"
+        - "reviewer_id"
+        - "review_stage"
+        - "score"
+        - "technical_implementation_score"
+        - "documentation_score"
+        - "innovation_score"
+        - "presentation_score"
+        - "team_contribution_score"
+        - "feedback"
+        - "review_date"
+    notifications:
+      columns:
+        - "id"
+        - "user_id"
+        - "message"
+        - "notification_type"
+        - "related_project_id"
+        - "related_task_id"
+        - "is_read"
+        - "created_at"
+    activity_logs:
+      columns:
+        - "id"
+        - "user_id"
+        - "project_id"
+        - "task_id"
+        - "action"
+        - "description"
+        - "created_at"
+
+technology_stack:
+  frontend:
+    framework: "React.js"
+    build_tool: "Vite"
+    styling:
+      - "Tailwind CSS"
+    libraries:
+      - "React Router"
+      - "Axios"
+      - "Recharts"
+      - "FullCalendar"
+      - "React Hook Form"
+  backend:
+    language: "Python"
+    framework: "FastAPI"
+    libraries:
+      - "SQLAlchemy"
+      - "Pydantic"
+      - "Alembic"
+      - "JWT Authentication"
+  database:
+    primary: "PostgreSQL"
+  optional_infrastructure:
+    - technology: "Redis"
+      purpose: "Caching and real-time related workloads"
+    - technology: "Celery"
+      purpose: "Background jobs"
+    - technology: "S3"
+      purpose: "Document/file storage"
+    - technology: "MinIO"
+      purpose: "Self-hosted object storage"
+    - technology: "WebSocket"
+      purpose: "Real-time notifications"
+    - technology: "Docker"
+      purpose: "Containerization and deployment"
+
+frontend_pages:
+  - name: "Login"
+    route: "/login"
+  - name: "Register"
+    route: "/register"
+  - name: "Dashboard"
+    route: "/dashboard"
+  - name: "Projects"
+    route: "/projects"
+  - name: "Create Project"
+    route: "/projects/new"
+  - name: "Project Details"
+    route: "/projects/:project_id"
+  - name: "Tasks"
+    route: "/tasks"
+  - name: "Calendar"
+    route: "/calendar"
+  - name: "Team"
+    route: "/team"
+  - name: "Documents"
+    route: "/documents"
+  - name: "Reports"
+    route: "/reports"
+  - name: "Notifications"
+    route: "/notifications"
+  - name: "Discussions"
+    route: "/discussions"
+  - name: "Settings"
+    route: "/settings"
+
+ui_design:
+  style: "Modern SaaS"
+  direction: "Clean, professional, responsive, dashboard-oriented"
+  layout:
+    desktop: "Left sidebar + top navigation + main content"
+    tablet: "Collapsible sidebar + top navigation"
+    mobile: "Bottom navigation or collapsible drawer"
+  dashboard_structure:
+    - "Sidebar"
+    - "Top Bar"
+    - "Greeting"
+    - "Statistics Cards"
+    - "Active Projects"
+    - "Upcoming Deadlines"
+    - "Recent Activity"
+  project_card:
+    fields:
+      - "Project Name"
+      - "Project Code"
+      - "Progress"
+      - "Members"
+      - "Task Count"
+      - "Deadline"
+      - "Status"
+      - "Priority"
+  design_principles:
+    - "Use clear visual hierarchy"
+    - "Keep important actions visible"
+    - "Use consistent status indicators"
+    - "Use responsive layouts"
+    - "Use accessible forms"
+    - "Keep tables searchable and filterable"
+    - "Use confirmation dialogs for destructive actions"
+
+status_system:
+  project_status:
+    - "Planning"
+    - "Not Started"
+    - "In Progress"
+    - "On Hold"
+    - "Completed"
+    - "Cancelled"
+  task_status:
+    - "Todo"
+    - "In Progress"
+    - "Review"
+    - "Done"
+  priority:
+    - "Low"
+    - "Medium"
+    - "High"
+    - "Critical"
+
+mvp:
+  phase_1:
+    goal: "Core project management"
+    features:
+      - "Login/Register"
+      - "Dashboard"
+      - "Create Project"
+      - "Project Details"
+      - "Team Management"
+      - "Task Management"
+      - "Kanban Board"
+      - "Milestones"
+      - "Calendar"
+      - "Notifications"
+  phase_2:
+    goal: "Academic collaboration and reporting"
+    features:
+      - "Documents"
+      - "Comments"
+      - "Activity Timeline"
+      - "Reports"
+      - "Academic Reviews"
+      - "PDF Export"
+      - "Excel Export"
+      - "CSV Export"
+  phase_3:
+    goal: "Advanced collaboration and AI"
+    features:
+      - "Real-time Notifications"
+      - "Chat"
+      - "AI Project Assistant"
+      - "Automatic Progress Summaries"
+      - "Risk Detection"
+      - "Deadline Detection"
+      - "AI-Generated Project Reports"
+
+future_ai_features:
+  - name: "AI Project Assistant"
+    purpose: "Answer questions about projects, tasks, deadlines, and progress."
+  - name: "Automatic Progress Summary"
+    purpose: "Generate daily or weekly project summaries."
+  - name: "Risk Detection"
+    purpose: "Identify overdue tasks, overloaded members, and blocked work."
+  - name: "Deadline Detection"
+    purpose: "Identify projects and tasks approaching deadlines."
+  - name: "AI Report Generator"
+    purpose: "Generate academic project reports from project data."
+  - name: "Meeting Summary"
+    purpose: "Convert project meeting notes into action items and tasks."
+
+example_project:
+  name: "AI-Based Academic Management System"
+  project_code: "APMS-2026-001"
+  status: "In Progress"
+  progress: 72
+  priority: "High"
+  owner: "Harsha"
+  start_date: "2026-09-01"
+  deadline: "2026-10-20"
+  technologies:
+    - "Python"
+    - "FastAPI"
+    - "React"
+    - "PostgreSQL"
+  members:
+    - name: "Harsha"
+      role: "Project Manager"
+    - name: "Rahul"
+      role: "Backend Developer"
+    - name: "Priya"
+      role: "Frontend Developer"
+    - name: "Sai"
+      role: "ML Developer"
+
+development_order:
+  - "Set up React + Vite frontend"
+  - "Set up FastAPI backend"
+  - "Set up PostgreSQL database"
+  - "Implement authentication"
+  - "Create users and roles"
+  - "Create project CRUD"
+  - "Create project-member management"
+  - "Create task CRUD"
+  - "Implement Kanban board"
+  - "Create milestones"
+  - "Create dashboard statistics"
+  - "Implement calendar"
+  - "Implement notifications"
+  - "Add documents"
+  - "Add comments and activity logs"
+  - "Add academic reviews"
+  - "Add reports and exports"
+  - "Add responsive design"
+  - "Add testing"
+  - "Dockerize and deploy"
